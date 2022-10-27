@@ -25,11 +25,26 @@ const Header = (props) => {
 
   const handleSearch = (e) => {
     props.setPesquisa(e.target.value);
+    console.log(e.target.value)
   };
 
    const handleIdSearch = (e) => {
     props.setIdFilter(e.target.value);
+    console.log(e.target.value)
   };
+
+   const handleTypeSearch =(e) => {
+    props.setTipo(e.target.value)
+    console.log(e.target.value)
+    console.log("acessei")
+   }
+
+   const handleCresSearch =(e) => {
+    props.setCrescente(e.target.value)
+    console.log(e.target.value)
+   }
+
+   
 
   return (
     <Container>
@@ -45,17 +60,20 @@ const Header = (props) => {
         onChange={handleSearch}
         value={props.pesquisa}
       />
-      <select>
+      <select onChange={handleCresSearch}>
         <option value="">Ordenar</option>
-        <option value="">Crescente</option>
-        <option value="">Decrescente</option>
+        <option value="Crescente">Crescente</option>
+        <option value="Decrescente">Decrescente</option>
       </select>
       <select
         name="tipo"
         id="tipo"
+        value={props.tipo}
+        onChange={handleTypeSearch}
           >
         <option value="">Selecione um tipo</option>
-        {pokemontypesArray.map((type) => {
+        {
+        pokemontypesArray.map((type) => {
           return (
             <option key={type} value={type}>
               {type}
